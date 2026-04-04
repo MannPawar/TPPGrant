@@ -43,6 +43,21 @@ class CorpusChunk:
     source_file: str
     collection_name: str
     priority: float
+    section_title: str = "General"
+    parent_section: str = ""
+    page_start: int = 1
+    page_end: int = 1
+
+
+@dataclass(slots=True)
+class ProposalSectionDraft:
+    title: str
+    prompt: str
+    draft_text: str
+    longform_response: str
+    evidence_points: list[str]
+    cited_sources: list[str]
+    source_highlights: list[dict[str, Any]]
 
 
 @dataclass(slots=True)
@@ -52,3 +67,6 @@ class ProposalDraft:
     tailored_program_pitch: str
     evidence_points: list[str]
     source_highlights: list[dict[str, Any]]
+    sections: list[ProposalSectionDraft] = field(default_factory=list)
+    source_citations: list[str] = field(default_factory=list)
+    combined_longform_draft: str = ""

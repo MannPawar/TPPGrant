@@ -279,6 +279,7 @@ def rank_opportunity(opportunity: GrantOpportunity, funding_goal: str) -> GrantO
 
     goal_tokens = tokenize(funding_goal)
     mission_tokens = tokenize(" ".join(TPP_PROFILE["funding_priorities"] + TPP_PROFILE["keywords"]))
+    eligibility_tokens = tokenize(" ".join(TPP_PROFILE["eligibility_terms"]))
 
     goal_overlap = len(goal_tokens.intersection(haystack_tokens))
     mission_overlap = len(mission_tokens.intersection(haystack_tokens))
